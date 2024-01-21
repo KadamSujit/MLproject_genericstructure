@@ -10,8 +10,8 @@ from dataclasses import dataclass # dataclass is used for creating class variabl
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
-#from src.components.model_trainer import ModelTrainerConfig
-#from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 
 
@@ -62,7 +62,8 @@ class DataIngestion:
         
 # Here, in this class we read the dataset from some location (here local machine), 
 # then we saved the data (raw as well as train. test) and then return the saved train, test path.
-        
+
+#below code is just to check for working of the code from time to time      
 if __name__=="__main__":
     obj=DataIngestion()
     train_data,test_data=obj.initiate_data_ingestion()
@@ -70,7 +71,6 @@ if __name__=="__main__":
     data_transformation=DataTransformation()
     train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
     
-    '''
     modeltrainer=ModelTrainer()
     print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
-    '''
+   
