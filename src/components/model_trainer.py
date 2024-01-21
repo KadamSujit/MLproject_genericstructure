@@ -45,6 +45,7 @@ class ModelTrainer:
             )
             
             #creating dictonary of models to try out with
+            # these models can also be kept in seperate .yaml file
             models = {
                 "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
@@ -56,6 +57,7 @@ class ModelTrainer:
             }
             
             #Hyperparamater tuning
+            #these parameters can also be kept in seperate .yaml file and then read here
             params={
                 "Decision Tree": {
                     'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
