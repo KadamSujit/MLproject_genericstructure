@@ -14,15 +14,18 @@ class PredictPipeline:
         try:
             model_path=os.path.join("artifacts","model.pkl") #trained model path
             preprocessor_path=os.path.join('artifacts','preprocessor.pkl') #transfromation obj path
-            print("Before Loading")
+            
             #loading all the models
+            print("Loading Models")
             model=load_object(file_path=model_path)
             preprocessor=load_object(file_path=preprocessor_path)
-            print("After Loading")
-
+            
             #applying transformation on predicting data
+            print("Transforming data")
             data_scaled=preprocessor.transform(features)
+
             #predicting from given input data
+            print("Predicting")
             preds=model.predict(data_scaled)
             return preds
         

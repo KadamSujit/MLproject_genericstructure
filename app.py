@@ -19,7 +19,7 @@ def index():
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
-        return render_template('home.html') #if method is GET then go to home page
+        return render_template('home.html') #if method is GET then go to default home page
     else:
         data=CustomData( #get prediction data from html
             gender=request.form.get('gender'), # when we use post method, request has all the information
@@ -33,13 +33,14 @@ def predict_datapoint():
         )
         #getting prediction input data in form of dataframe
         pred_df=data.get_data_as_data_frame()
-        print(pred_df)
         print("Before Prediction")
+        print(pred_df)
 
         predict_pipeline=PredictPipeline() #initializing prediction pipeline
-        print("Mid Prediction")
+        print("Mid Prediction Details")
         results=predict_pipeline.predict(pred_df) #predicting
-        print("After Prediction")
+        print("Results After Prediction")
+        print(results)
         return render_template('home.html',results=results[0])
     
 
